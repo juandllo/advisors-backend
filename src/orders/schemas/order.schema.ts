@@ -27,7 +27,7 @@ export class Order {
   @Prop({ required: true, type: mongoose.Schema.Types.Array })
   product: Product[];
 
-  @Prop({ required: true, default: "Nueva" })
+  @Prop({ required: true, default: "Nuevo" })
   status: string;
 
   @Prop()

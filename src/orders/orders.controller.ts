@@ -25,6 +25,11 @@ export class OrdersController {
     return this.ordersService.findById(orderId);
   }
 
+  @Get("/user/:userId")
+  findOrdersByUser(@Param("userId") userId: string): Promise<OrderDto[]> {
+    return this.ordersService.findOrdersByUser(userId);
+  }
+
   @Patch(":orderId")
   update(@Param("orderId") orderId: string, @Body() updateOrderDto: OrderDto): Promise<OrderDto> {
     return this.ordersService.update(orderId, updateOrderDto);

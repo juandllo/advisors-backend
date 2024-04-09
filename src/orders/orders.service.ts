@@ -21,6 +21,10 @@ export class OrdersService {
     return this.orderModel.findById(orderId).exec();
   }
 
+  async findOrdersByUser(userId: string): Promise<OrderDto[]> {
+    return this.orderModel.find({ user: userId }).exec()
+  }
+
   async update(orderId: string, updateOrderDto: OrderDto): Promise<Order> {
     return this.orderModel.findOneAndUpdate({ _id: orderId }, updateOrderDto, {
       new: true
