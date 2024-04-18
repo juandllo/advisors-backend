@@ -20,4 +20,8 @@ export class UsersService {
   async findById(userId: string): Promise<UserDto> {
     return this.userModel.findById(userId).exec();
   }
+
+  async findOne(username: string): Promise<UserDto | undefined> {
+    return this.userModel.findOne({ name: username }).exec();
+  }
 }

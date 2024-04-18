@@ -7,7 +7,7 @@ async function bootstrap() {
   app.enableVersioning({
     type: VersioningType.URI
   });
-  app.enableCors();
+  app.enableCors(); // incluimos la configuracion de cors
   await app.listen(3000);
 }
 bootstrap();
