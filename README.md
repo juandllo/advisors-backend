@@ -36,6 +36,21 @@ pnpm run test:e2e
 pnpm run test:cov
 ```
 
+## Configuración del entorno
+
+Para realizar la configuración del entorno, se debe crear el archivo **`.env`**
+en la raiz del proyecto.
+Tener en cuenta las configuraciones recomendadas en el archivo **`.env.example`**
+
+```bash
+# Se refiere a la cadena de conexión con la base de datos
+DATABASE_URL=
+# Se refiere al secreto para generar el token jwt al momento del inicio de sesion
+JWT_SECRET=
+# Se refiere al número utilizado por bcrypt para generar aleatoriedad en el hash de los passwords
+SALT=
+```
+
 ## Estructura del Proyecto
 
 ```bash
