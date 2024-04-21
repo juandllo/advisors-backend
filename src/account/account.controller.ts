@@ -15,12 +15,12 @@ import { AccountService } from './account.service';
   version: '1',
 })
 export class AccountController {
-  constructor(private accountService: AccountService) {}
+  constructor(private accountService: AccountService) { }
 
   @HttpCode(HttpStatus.OK)
   @Post('login')
   signIn(@Body() signInDto: Record<string, any>) {
-    return this.accountService.signIn(signInDto.username, signInDto.password);
+    return this.accountService.signIn(signInDto.email, signInDto.password);
   }
 
   @UseGuards(AccountGuard)

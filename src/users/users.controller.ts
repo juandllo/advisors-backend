@@ -1,6 +1,5 @@
 import { Body, Controller, Get, Param, Post, UseGuards } from '@nestjs/common';
 import { UsersService } from './users.service';
-import { User } from './schemas/user.schema';
 import { UserDto } from './dto/user.dto';
 import { AccountGuard } from 'src/account/account.guard';
 
@@ -13,13 +12,13 @@ export class UsersController {
 
   @Post()
   @UseGuards(AccountGuard)
-  create(@Body() userDto: UserDto): Promise<User> {
+  create(@Body() userDto: UserDto) {
     return this.usersService.create(userDto);
   }
 
   @Get()
   @UseGuards(AccountGuard)
-  findAll(): Promise<User[]> {
+  findAll(): Promise<UserDto[]> {
     return this.usersService.findAll();
   }
 
@@ -29,4 +28,3 @@ export class UsersController {
     return this.usersService.findById(userId);
   }
 }
-

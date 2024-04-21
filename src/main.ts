@@ -5,7 +5,7 @@ import { VersioningType } from '@nestjs/common';
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   app.enableVersioning({
-    type: VersioningType.URI
+    type: VersioningType.URI,
   });
   app.enableCors(); // incluimos la configuracion de cors
   await app.listen(3000);

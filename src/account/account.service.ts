@@ -1,24 +1,30 @@
-import { Injectable } from '@nestjs/common';
+import { HttpException, Injectable, NotFoundException } from '@nestjs/common';
 import { UsersService } from '../users/users.service';
 import { JwtService } from '@nestjs/jwt';
+import { compare } from 'bcrypt';
 
 @Injectable()
 export class AccountService {
   constructor(
     private usersService: UsersService,
     private jwtService: JwtService,
-  ) {}
+  ) { }
 
   async signIn(
-    username: string,
-    pass: string,
+    email: string,
+    password: string,
   ): Promise<{ access_token: string }> {
-    const user = await this.usersService.findOne(username);
-    // TODO adicionar la validacion de la contrasena
-    console.log(`el password del usuario ${username} es -> ${pass}`);
-    console.log(`respuesta del servicio ${JSON.stringify(user)}`);
+    const user = await this.usersService.findByEmail(email);
 
-    const payload = { sub: user.lastName, username: user.name };
+    console.log(`Se he encontrado al usuario ${JSON.stringify(user)}`);
+
+    if (!user) throw new NotFoundException(`El usuario ${email} no existe.`);
+
+    const validPassword = await compare(password, user.password);
+
+    if (!validPassword) throw new HttpException('INVALID_PASSWORD', 403);
+
+    const payload = { sub: user.email, ...user };
 
     return {
       access_token: await this.jwtService.signAsync(payload),

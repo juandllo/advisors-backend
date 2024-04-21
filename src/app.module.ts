@@ -5,12 +5,11 @@ import { UsersModule } from './users/users.module';
 import { OrdersModule } from './orders/orders.module';
 import { MessengersModule } from './messengers/messengers.module';
 import { AccountModule } from './account/account.module';
+import { DATABASE_URL } from './constants';
 
 @Module({
   imports: [
-    MongooseModule.forRoot(
-      'mongodb+srv://advisor:vzQJRMoAbkOPmsn1@cluster0.wbhsxbs.mongodb.net/advisors',
-    ),
+    MongooseModule.forRoot(DATABASE_URL),
     HealthModule,
     UsersModule,
     OrdersModule,
@@ -18,4 +17,4 @@ import { AccountModule } from './account/account.module';
     AccountModule,
   ],
 })
-export class AppModule {}
+export class AppModule { }
