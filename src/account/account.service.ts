@@ -24,7 +24,6 @@ export class AccountService {
 
     const payload = {
       sub: JSON.parse(JSON.stringify(user)),
-      role: [...user.roles],
     };
 
     return {

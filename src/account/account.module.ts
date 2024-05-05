@@ -11,7 +11,7 @@ import { JWT_SECTRET } from '../constants';
     JwtModule.register({
       global: true,
       secret: JWT_SECTRET,
-      signOptions: { expiresIn: '540s' },
+      signOptions: { expiresIn: '1080s' },
     }),
   ],
   controllers: [AccountController],
