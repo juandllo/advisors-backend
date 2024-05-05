@@ -11,23 +11,23 @@ export type Product = {
   desc: string;
   amount: number;
   quantity: number;
-}
+};
 
 @Schema({ timestamps: true })
 export class Order {
-  @Prop({ required: true, type: mongoose.Schema.Types.ObjectId, ref: "User" })
+  @Prop({ required: true, type: mongoose.Schema.Types.ObjectId, ref: 'User' })
   user: User;
 
-  @Prop({ type: mongoose.Schema.Types.ObjectId, ref: "Messenger" })
+  @Prop({ type: mongoose.Schema.Types.ObjectId, ref: 'Messenger' })
   messenger: Messenger;
 
   @Prop({ required: true })
-  total: number;          
-  
+  total: number;
+
   @Prop({ required: true, type: mongoose.Schema.Types.Array })
   product: Product[];
 
-  @Prop({ required: true, default: "Nuevo" })
+  @Prop({ required: true, default: 'Nuevo' })
   status: string;
 
   @Prop()
@@ -38,3 +38,4 @@ export class Order {
 }
 
 export const OrderSchema = SchemaFactory.createForClass(Order);
+
