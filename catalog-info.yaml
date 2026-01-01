@@ -16,4 +16,4 @@ spec:
   type: service
   lifecycle: production
   system: Advisors
-  owner: juandllo
+  owner: Personal
