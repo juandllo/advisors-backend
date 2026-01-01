@@ -1,0 +1,18 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: advisors-backend
+  description: Backend service for advisors
+  tags:
+    - node
+    - backend
+    - nestjs
+    - mongoose
+    - typescript
+  annotations:
+    "backstage.io/kubernetes-id": advisors-backend
+    "backstage.io/kubernetes-namespace": default
+spec:
+  type: service
+  lifecycle: production
+  owner: juandllo
